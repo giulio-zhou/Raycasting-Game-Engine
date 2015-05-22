@@ -1,12 +1,12 @@
 #include "player.h"
 
-Player::Player(int x, int y, double direction) {
+Player::Player(double x, double y, double direction) {
     this->x = x;
     this->y = y;
     this->direction = direction;
 }
 
-void Player::set_location(int x, int y) {
+void Player::set_location(double x, double y) {
     this->x = x;
     this->y = y;
 }

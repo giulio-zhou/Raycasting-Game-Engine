@@ -7,11 +7,14 @@ class Game {
     public:
         int resolution;
         double focal_length;
+        double* walls;
         Player player;
         Map map; 
         Game(){};
-        Game(int resolution, double focal_length);
+        Game(int resolution, double focal_length, Map map, Player player);
         ~Game(){};
+
+        void draw_vectors();
 };
 
 #endif

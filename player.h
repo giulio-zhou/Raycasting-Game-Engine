@@ -3,13 +3,13 @@
 
 class Player {
     public:
-        int x;
-        int y;
+        double x;
+        double y;
         double direction;
         Player(){};
-        Player(int x, int y, double direction);
+        Player(double x, double y, double direction);
         ~Player(){};
-        void set_location(int x, int y);
+        void set_location(double x, double y);
         void set_direction(double direction);
 };
 
