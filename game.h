@@ -8,6 +8,7 @@ class Game {
         int resolution;
         double focal_length;
         double* walls;
+        char* frame;
         Player player;
         Map map; 
         Game(){};
