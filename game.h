@@ -9,13 +9,14 @@ class Game {
         double focal_length;
         double* walls;
         char* frame;
-        Player player;
-        Map map; 
+        Player* player;
+        Map* map; 
         Game(){};
-        Game(int resolution, double focal_length, Map map, Player player);
+        Game(int resolution, double focal_length, Map* map, Player* player);
         ~Game(){};
 
         void draw_vectors();
+        void write_buffer();
 };
 
 #endif

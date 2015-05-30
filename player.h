@@ -9,8 +9,8 @@ class Player {
         Player(){};
         Player(double x, double y, double direction);
         ~Player(){};
-        void set_location(double x, double y);
-        void set_direction(double direction);
+        void walk_forward(double dx, double dy);
+        void rotate(double angle);
 };
 
 #endif
