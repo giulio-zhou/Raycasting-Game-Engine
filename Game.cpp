@@ -26,12 +26,14 @@ void Game::draw_vectors() {
 void Game::write_buffer() {
     for (int i = 0; i < resolution; i++) {
         double height = ((double) resolution) / walls[i];
+        if (height > resolution) height = resolution;
         double top_edge = ((double) resolution - height)/2;
         for (int j = 0; j < top_edge; j++) {
             frame[i + resolution*j] = 40;
         }
         for (int j = top_edge; j < top_edge + height; j++) {
-            frame[i + resolution*j] = 255;
+            frame[i + resolution*j] = (int) (255 / walls[i]);
+            if (walls[i] < 1) frame[i + resolution*j] = 255;
         }
         for (int j = top_edge + height; j < resolution; j++) {
             frame[i + resolution*j] = 0;

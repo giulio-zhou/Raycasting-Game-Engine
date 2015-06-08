@@ -68,10 +68,18 @@ void idle() {
         g->player->rotate(-M_PI * dt);
     if(move & right)
         g->player->rotate(M_PI * dt);
-    if(move & forward)
-        g->player->walk_forward(dx, dy);
-    if(move & backward)
-        g->player->walk_forward(-dx, -dy);
+    if(move & forward) {
+        if (g->map->check_wall(g->player, dx, 0))
+            g->player->walk_forward(dx, 0);
+        if (g->map->check_wall(g->player, 0, dy))
+            g->player->walk_forward(0, dy);
+    }
+    if(move & backward) {
+        if (g->map->check_wall(g->player, -dx, 0))
+            g->player->walk_forward(-dx, 0);
+        if (g->map->check_wall(g->player, 0, -dy))
+            g->player->walk_forward(0, -dy);
+    }
 
     if(move) {
         g->draw_vectors();
@@ -95,6 +103,12 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < 500; i++) {
         printf("%f\n", (*g).walls[i]);
     }
+    int* wallman = new int[5*5];
+    m->generate_maze_Prim(wallman, 5);
+    m->set_maze_wallgrid(wallman, 5);
+    p->x = 3;
+    p->y = 3;
+    g->draw_vectors();
 
     // Initialize OpenGL
     glutInit(&argc, argv);
